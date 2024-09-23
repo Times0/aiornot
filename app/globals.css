@@ -2,26 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 200 70% 95%;
+    --foreground: 200 50% 20%;
+    --primary: 200 80% 50%;
+    --primary-foreground: 200 20% 99%;
+    --secondary: 200 40% 90%;
+    --secondary-foreground: 200 50% 20%;
+    --accent: 25 95% 65%;
+    --accent-foreground: 200 20% 99%;
+    --border: 200 50% 85%;
+    --ring: 200 80% 50%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 200 50% 10%;
+    --foreground: 200 20% 99%;
+    --primary: 200 80% 50%;
+    --primary-foreground: 200 20% 99%;
+    --secondary: 200 30% 20%;
+    --secondary-foreground: 200 20% 99%;
+    --accent: 25 95% 65%;
+    --accent-foreground: 200 20% 99%;
+    --border: 200 50% 30%;
+    --ring: 200 80% 50%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-full font-bold transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90;
   }
 }
